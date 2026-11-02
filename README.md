@@ -1,15 +1,38 @@
-## API Gestión Académica (PPOO)
-Proyecto en desarrollo para la administración de datos universitarios.
-Por ahora solo está implementado el módulo de profesores `(/api/v1/teachers)`, que permite crear, consultar (con paginación), actualizar y eliminar docentes, incluyendo validación de correos duplicados.
-### Stack
+# API Gestión Académica (PPOO)
+
+Por ahora solo está implementado los módulos de profesores (`/api/v1/teachers`), estudiantes (`/api/v1/students`), y carreras (`/api/v1/careers`).
+
+---
+
+## CIPA
+- Victor Manuel Rodriguez
+- Juan Dueñas Garcia
+
+---
+
+## Docker
+Para levantar la aplicación y la base de datos por primera vez:
+```bash
+docker compose up -d
+```
+Para iniciar o detener los contenedores:
+```bash
+docker compose start
+docker compose stop
+```
+
+## Stack
 - Java 21 / Spring Boot 4
 - PostgreSQL + Spring Data JPA
 - Gradle
-- Swagger / Scalar (disponibles en `/scalar/` y `/swagger-ui/index.html`)
-- Postman (colección disponible en [postman_collection/](/postman_collection/PPOO_Universidad.postman_collection.json))
+- Swagger / Scalar
+- Postman (colección disponible en postman_collection/PPOO_Universidad.postman_collection.json)
 
-## Pendiente
-- Docker: Crear el Dockerfile y docker-compose.yml para levantar la app y la base de datos fácilmente.
-- Entidades del sistema: Diseñar e implementar las clases de Estudiantes, Materias, Horarios y sus relaciones.
-- Seguridad y tests: Implementar autenticación y pruebas unitarias/integración.
-- Manejo de errores: Cubrir mas casos de error.
+## Documentación
+- Swagger UI: /swagger-ui/index.html
+- Scalar: /scalar
+
+## Incompleto
+- Diseñar e implementar los casos de uso y relaciones para las entidades Course, CourseStudent y Subject.
+- Implementar autenticación y pruebas unitarias.
+- Cubrir más casos de error.
