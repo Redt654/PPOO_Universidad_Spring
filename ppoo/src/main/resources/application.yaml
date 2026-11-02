@@ -6,13 +6,16 @@ spring:
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     url: ${DB_URL}
+
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: update
-
-server:
-  port: 8089
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 scalar:
-  path: "/scalar/"
+  path: /scalar
+  enabled: true
