@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: ppoo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: holi
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d ppoo" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: ppoo/.
+      dockerfile: Dockerfile
+    container_name: ppoo_app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/ppoo
+      DB_USER: postgres
+      DB_PASSWORD: holi
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
