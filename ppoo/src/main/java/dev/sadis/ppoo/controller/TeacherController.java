@@ -1,7 +1,7 @@
 package dev.sadis.ppoo.controller;
 
-import dev.sadis.ppoo.dto.TeacherRequest;
-import dev.sadis.ppoo.dto.TeacherResponse;
+import dev.sadis.ppoo.dto.request.teacher.TeacherRequest;
+import dev.sadis.ppoo.dto.response.TeacherResponse;
 import dev.sadis.ppoo.service.TeacherService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
