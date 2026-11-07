@@ -7,6 +7,8 @@ Por ahora solo está implementado los módulos de profesores (`/api/v1/teachers`
 ## CIPA
 - Victor Manuel Rodriguez
 - Juan Dueñas Garcia
+- David Mauricio Bustos Montoya
+- Juan Sebastian Tijaro Morales
 
 ---
 
