@@ -7,6 +7,7 @@ public record TeacherResponse(
         String name,
         String email,
         String document,
+        Long facultyId,
         Boolean isActive
 ) {
     public static TeacherResponse build(Teacher teacher) {
@@ -15,6 +16,7 @@ public record TeacherResponse(
                 teacher.getName(),
                 teacher.getEmail(),
                 teacher.getDocument(),
+                teacher.getFaculty().getId(),
                 teacher.isActive()
         );
     }

@@ -1,6 +1,6 @@
 package dev.sadis.ppoo.controller;
 
-import dev.sadis.ppoo.dto.request.teacher.TeacherRequest;
+import dev.sadis.ppoo.dto.request.TeacherRequest;
 import dev.sadis.ppoo.dto.response.TeacherResponse;
 import dev.sadis.ppoo.service.TeacherService;
 import jakarta.validation.Valid;
@@ -28,6 +28,14 @@ public class TeacherController {
     @GetMapping
     public ResponseEntity<Page<TeacherResponse>> findAll(Pageable pageable){
         return ResponseEntity.ok(teacherService.findAll(pageable));
+    }
+
+    @GetMapping("/faculty/{facultyId}")
+    public ResponseEntity<Page<TeacherResponse>> findByFaculty(
+            @PathVariable Long facultyId,
+            Pageable pageable
+    ) {
+        return ResponseEntity.ok(teacherService.findByFaculty(facultyId, pageable));
     }
 
     @GetMapping("/{id}")

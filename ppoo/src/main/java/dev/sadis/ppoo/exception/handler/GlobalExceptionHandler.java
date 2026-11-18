@@ -1,13 +1,11 @@
 package dev.sadis.ppoo.exception.handler;
 
-import dev.sadis.ppoo.exception.career.CareerCodeNotFoundException;
-import dev.sadis.ppoo.exception.career.CareerCodeTakenException;
-import dev.sadis.ppoo.exception.career.CareerNameTakenException;
-import dev.sadis.ppoo.exception.career.CareerNotFoundException;
-import dev.sadis.ppoo.exception.student.DocumentTakenException;
-import dev.sadis.ppoo.exception.student.EmailTakenException;
-import dev.sadis.ppoo.exception.student.StudentCodeTakenException;
-import dev.sadis.ppoo.exception.student.StudentNotFoundException;
+import dev.sadis.ppoo.exception.faculty.FacultyCodeTakenException;
+import dev.sadis.ppoo.exception.faculty.FacultyEmailTakenException;
+import dev.sadis.ppoo.exception.faculty.FacultyNotFoundException;
+import dev.sadis.ppoo.exception.faculty.FacultyPhoneTakenException;
+import dev.sadis.ppoo.exception.faculty.FacultyWithTeachersException;
+import dev.sadis.ppoo.exception.teacher.TeacherDocumentTakenException;
 import dev.sadis.ppoo.exception.teacher.TeacherEmailTakenException;
 import dev.sadis.ppoo.exception.teacher.TeacherNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,11 +26,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({
             TeacherEmailTakenException.class,
-            CareerCodeTakenException.class,
-            CareerNameTakenException.class,
-            DocumentTakenException.class,
-            EmailTakenException.class,
-            StudentCodeTakenException.class
+            TeacherDocumentTakenException.class,
+            FacultyCodeTakenException.class,
+            FacultyPhoneTakenException.class,
+            FacultyEmailTakenException.class,
+            FacultyWithTeachersException.class
     })
     public ResponseEntity<ApiErrorResponse> handleConflictExceptions(RuntimeException error, HttpServletRequest request) {
         return buildResponse(HttpStatus.CONFLICT, error.getMessage(), request, null);
@@ -40,9 +38,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({
             TeacherNotFoundException.class,
-            CareerCodeNotFoundException.class,
-            CareerNotFoundException.class,
-            StudentNotFoundException.class
+            FacultyNotFoundException.class
     })
     public ResponseEntity<ApiErrorResponse> handleNotFoundExceptions(RuntimeException error, HttpServletRequest request) {
         return buildResponse(HttpStatus.NOT_FOUND, error.getMessage(), request, null);

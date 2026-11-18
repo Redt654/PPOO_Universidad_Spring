@@ -18,27 +18,50 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "careers")
-@NoArgsConstructor
+@Table(name = "faculties")
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
 @Setter
-public class Career {
+public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    @Column(length = 100, nullable = false)
-    private String name;
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(nullable = false, length = 50, unique = true)
     private String code;
+
+    @Column( nullable = false, length = 100)
+    private String name;
+
+    @Column(columnDefinition = "TEXT",nullable = false)
+    private String description;
+
+    @Column(name = "dean_name",nullable = false, length = 100)
+    private String deanName;
+
+    @Column(nullable = false, length = 150, unique = true)
+    private String email;
+
+    @Column(nullable = false, length = 20, unique = true)
+    private String phone;
+
+    @Column(nullable = false, length = 100)
+    private String location;
+
+    @Builder.Default
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
+
     @Column(name = "created_at", nullable = false, updatable = false)
-    @Setter(AccessLevel.NONE)
     @CreationTimestamp
+    @Setter(AccessLevel.NONE)
     private LocalDateTime createdAt;
+
     @Column(name = "updated_at", nullable = false)
     @UpdateTimestamp
+    @Setter(AccessLevel.NONE)
     private LocalDateTime updatedAt;
 }
