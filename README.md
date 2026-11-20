@@ -25,6 +25,7 @@ docker compose stop
 - Swagger / Scalar
 - Postman (colección disponible en postman_collection/PPOO_Universidad.postman_collection.json)
 - Logback & Slf4j
+- Lombock
 - Docker
 
 ## Documentación
